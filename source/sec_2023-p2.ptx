@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_2023-p2" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Segunda Prova</title>
+  <exercises xml:id="gab_2023-p2" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <exercise>
+      <statement>
+        <p>Dada a função <m>f(x)=\dfrac{x^2}{x-2}</m>, determine:
+	  <ol marker="a.">
+	    <li>o seu domínio, seus intevalos de crescimento e descrecimento
+	    e, caso existam, seus pontos de máximo e mínimo locais;</li>
+	    <li>seus intervalos de concavidade e, caso existam, seus
+	    pontos de inflexão;</li>
+	    <li>os limites pertinentes para o
+	    esboço do gráfico de <m>f</m>;</li>
+	    <li>suas assíntotas horizontais, verticais e oblíquas, caso
+	    existam (justifique as suas existências ou não).</li>
+	  </ol>
+	</p>
+	
+	<p>Esboce o gráfico de <m>f</m> utilizando as informações
+	obtidas nos itens acima.
+	</p>
+      </statement>
+      <solution>
+	<ol marker="a.">
+	  <li><p>O domínio de <m>f</m> é o conjunto
+	  <m>D_f=\mathbb{R}\setminus\{2\}</m>.</p>
+	  <p>Os intervalos de crescimento de <m>f</m> são determinados
+	  pelo sinal de sua derivada,
+	  <me>f'(x)=\dfrac{x^2-4x}{(x-2)^2},</me>
+	  cujo sinal é determinado pelo numerador, uma vez que o
+	  denominador é sempre positivo. Fazendo essa análise temos
+	  que
+	  <ul>
+	    <li><m>x&lt;0\implies f'(x)&gt;0</m>, sendo <m>f</m>
+	    <em>crescente</em> nesse intervalo;</li>
+	    <li><m>0&lt;x&lt;4\implies f'(x)&lt;0</m>, sendo <m>f</m>
+	    <em>decrescente</em> nesse intervalo;
+	    </li>
+	    <li><m>x&gt;4\implies f'(x)&gt;0</m>, e então <m>f</m>
+	    volta a ser <em>crescente</em> nesse intervalo;</li>
+	  </ul></p>
+	  <p>Com isso temos que <m>x=0</m> é um ponto de máximo local e
+	  <m>x=4</m> é um ponto de mínimo local para <m>f</m>.</p>
+	  </li>
+	  <li><p>Para estudar a concavidade de <m>f</m> consideramos sua
+	  segunda derivada: <me>f''(x)=\dfrac{8}{(x-2)^3},</me> cujo
+	  sinal é determinado pelo denominador, ou seja:
+	  <ul>
+	    <li><m>x&lt;2\implies f''(x)&lt;0</m>, tendo <m>f</m>
+	    <em>concavidade para baixo</em> nesse intervalo;</li>
+	    <li><m>x&gt;2\implies f''(x)&gt;0</m>, tendo <m>f</m>
+	    <em>concavidade para cima</em> nesse intervalo;</li>
+	  </ul></p>
+	  <p>Não há pontos de inflexão no gráfico de <m>f</m>
+	  (<m>x=2\not\in D_f</m>).</p>
+	  </li>
+	  <li><p>Considerando o domínio explicitado acima, os limites
+	  pertinentes são <m>x\to -\infty</m>, <m>x\to \infty</m>,
+	  <m>x\to 2^-</m> e <m>x\to 2^+</m>:
+	  <ul>
+	    <li>Podemos aplicar L'Hospital, obtendo
+	    <m>\lim\limits_{x\to-\infty}
+	    f(x)=\lim\limits_{x\to-\infty}\dfrac{2x}{1}=-\infty</m></li>
+	    <li>Novamente usando L'Hospital, temos
+	    <m>\lim\limits_{x\to+\infty}
+	    f(x)=\lim\limits_{x\to+\infty}\dfrac{2x}{1}=+\infty</m></li>
+	    <li><m>\lim\limits_{x\to 2^-} f(x)=\lim\limits_{x\to
+	    2^-}\dfrac{x^2}{x-2}=-\infty</m>, pois <m>x^2\to 4</m> e
+	    <m>x-2\to 0^-</m> quando <m>x\to 2^-</m>.</li>
+	    <li><m>\lim\limits_{x\to 2^+} f(x)=\lim\limits_{x\to
+	    2^+}\dfrac{x^2}{x-2}=+\infty</m>, pois <m>x^2\to 4</m> e
+	    <m>x-2\to 0^+</m> quando <m>x\to 2^+</m>.</li>
+	    </ul></p>
+	  </li>
+	  <li><p>Em vista dos limites acima, o gráfico de <m>f</m> não tem
+	  assíntotas horizontais, tem uma assíntota vertical em
+	  <m>x=2</m> e <em>pode ter</em> assíntotas oblíquas.</p>
+	  <p>Para verificar sua existência, calculamos
+	  <ul>
+	    <li><m>a=\lim\limits_{x\to-\infty}\dfrac{f(x)}{x}=
+	    \lim\limits_{x\to-\infty}\dfrac{x}{x-2}=1</m>, usando por
+	    exemplo a regra de L'Hospital;</li>
+	    <li><m>b=\lim\limits_{x\to-\infty}f(x)-ax
+	    =\lim\limits_{x\to-\infty}f(x)-x
+	    =\lim\limits_{x\to-\infty}\dfrac{2x}{x-2}=2</m>, também
+	    usando L'Hospital.
+	    </li>
+	  </ul></p>
+	  <p>Assim, temos <m>y=x+2</m> como assíntota para o gráfico de
+	  <m>f</m> em <m>-\infty</m>. Contas análogas mostram que a
+	  mesma reta também é assíntota ao gráfico de <m>f</m> em
+	  <m>+\infty</m>. Tudo pronto para esboçar o gráfico:
+	  <figure xml:id="fig_2023-p2q1">
+            <image width="90%" xml:id="fig-2453-2023-p2q1">
+              <latex-image>
+                \begin{tikzpicture}
+		\begin{axis}[axis lines = middle,enlargelimits,
+		xlabel = {$x$},
+		ylabel = {$y$},
+		axis on top=true]
+		\addplot[domain=-10:1.9,blue,samples=50] {x^2/(x-2)};
+		\addplot[domain=2.1:10,blue,samples=50] {x^2/(x-2)};
+		\addplot[domain=-10:10,dashed,orange] {x+2};
+		\draw[densely dashed,orange] ({rel axis cs:0,0} -| {axis
+		cs:2,0}) -- ({rel axis cs:0,1} -| {axis cs:2,0});
+		\end{axis}
+                \end{tikzpicture}
+              </latex-image>
+            </image>
+          </figure>
+	  </p>
+	  </li>
+	</ol>
+	<p>
+          Observamos inicialmente que para uma função <m>f</m> ser
+          contínua num ponto <m>x=p</m> (que deve estar em seu domínio),
+          basta verificar que <m>\lim\limits_{x\to p}f(x)=f(p)</m>. Além
+          disso, <m>\lim\limits_{x\to p}f(x)=L\in\R\iff
+          \lim\limits_{x\to p^+}f(x)=\lim\limits_{x\to p-}f(x)=L</m>.
+        </p>
+      </solution>
+    </exercise>
+
+    <exercise>
+      <statment>
+	<p>Seja <m>A=\big\{(x,y)\in\mathbb{R}^2\colon y\leq 3-x^2\text{ e }
+	y\geq -x+3\}</m>.</p>
+	<ol marker="a.">
+	  <li>Faça um esboço da região <m>A</m>.</li>
+	  <li>Determine a área de <m>A</m>.</li>
+	  <li>Determine o volume do sólido obtido pela rotação de <m>A</m> em
+	  torno do eixo <m>Ox</m>.</li>
+	</ol>
+      </statment>
+      <solution>
+	<ol marker="a.">
+	  <li>
+	    <p>As equações que delimitam a região <m>A</m> descrevem
+	    ojetos conhecidos: uma parábola e uma reta.
+	    <figure xml:id="fig_2023-p2q2a">
+              <image width="90%" xml:id="fig-2453-2023-p2q2a">
+		<latex-image>
+                  \begin{tikzpicture}
+		  \begin{axis}[axis lines = middle,enlargelimits,
+		  xlabel = {$x$},
+		  ylabel = {$y$},
+		  axis on top=true]
+		  \addplot[name path=A, domain=-2:2, blue] {3-x^2};
+		  \addplot[name path=B, domain=-2:2, blue] {3-x};
+		  \addplot [teal!30] fill between [of = A and B, soft
+		  clip={domain=0:1}];
+		  \end{axis}
+                  \end{tikzpicture}
+		</latex-image>
+              </image>
+            </figure></p>
+	  </li>
+	  <li>
+	    <p>Onservamos que os pontos de que definem as limitações da
+	    região são as interseções dos gráficos das funções que a
+	    definem. Suas abscissas satisfazem então <m>3-x^2=3-x\iff
+	    x=0</m> ou <m>x=1</m>.</p>
+	    <p>Com isso a área da região é dada por <me>\int_0^1
+	    3-x^2-(3-x)\, dx=\int_0^1 x-x^2\, dx
+	    =\Big(\frac{x^2}{2}-\frac{x^3}{3}\Big)\Big\|_0^1
+	    =\frac{1}{6}.</me></p>
+	  </li>
+	  <li>
+	    <p>O volume pedido será via fatiamento, ou seja, dado pela integral da área das
+	    fatias para cada <m>0\leq x\leq 1</m>. Cada uma dessas
+	    fatias é uma coroa circular de raio maior igual a
+	    <m>3-x^2</m> e raio menor igual a <m>3-x</m>. Veja a figura:
+
+	    <figure xml:id="fig_2023-p2q2c1">
+              <image width="50%" xml:id="fig-2453-2023-p2q2c1">
+		<asymptote>
+		  import graph3;
+		  import solids;
+		  size(10cm);
+		  currentprojection=perspective(0,0,10,up=Y);
+
+		  pen color=palegreen;
+		  real alpha=240;
+		  
+		  real f(real x) {return (3-x^2);}
+		  pair F(real x) {return (x,f(x));}
+		  triple F3(real x) {return (x,f(x),0);}
+		  
+		  path p=graph(F,0,1,n=10,operator ..)--cycle;
+		  path3 p3=path3(p);
+		  
+		  revolution a=revolution(p3,X,-alpha,0);
+		  render render=render(compression=0,merge=true);
+		  draw(surface(a),color,render);
+		  surface s=surface(p);
+		  draw(s,color,render);
+		  draw(rotate(-alpha,X)*s,color,render);
+		  
+		  draw(p3,blue);
+		  
+		  xaxis3(Label("$x$",1),xmin=-.5,xmax=1.5,Arrow3);
+		  yaxis3(Label("$y$",1),ymin=-3.5,ymax=3.5,Arrow3);
+		  zaxis3(Label("$z$",1),zmin=-1.5,zmax=1.5,Arrow3);
+		  //draw(arc(1.25*X,0.3,90,90,3,-90),Arrow3);
+		</asymptote>
+              </image>
+            </figure>
+
+	    </p>
+	    <p>Assim, <me>V=\int_0^1 \pi (3-x^2)^2-\pi (3-x)^2\,
+	    dx=\pi\int_0^1 x^4-7x^2-6x\, dx=\dfrac{13\pi}{15}.</me></p>
+	  </li>
+	</ol>
+      </solution>
+    </exercise>
+
+    <exercise>
+      <statement>
+	<p> Esta questão consiste de dois itens completamente
+	independentes:
+	<ol marker="a.">
+	  <li><p>Calcule as seguintes integrais indefinidas:
+	  <ol marker="1.">
+	    <li><m>\displaystyle{\int\frac{1}{(1+9x^2)^\frac{3}{2}}\,dx}</m>;</li>
+	    <li><m>\displaystyle{\int x\sec^2(2x)\, dx}</m>.</li>
+	  </ol></p></li>
+	  <li><p>Calcule, caso exista <m>\displaystyle{\lim\limits_{x\to
+	  0}\dfrac{\int_{0}^{x^2}e^{t^2}\,dt}{\int_{0}^{x}\sin(\sin
+	  t)\,dt}}</m>.</p></li>
+	</ol>
+	</p>
+      </statement>
+      <solution>
+	<ol marker="a.">
+	  <li>
+	    <ol marker="1.">
+	      <li><p>Fazendo <m>3x=\tan(u)</m> e então <m>3dx=\sec^2(u)\,
+	      du</m>, temos
+	      <md>
+		<mrow>\int\frac{1}{(1+9x^2)^\frac{3}{2}}\,dx
+		&amp;=\frac{1}{3}\int\frac{\sec^2(u)}{(1+\tan^2
+		u)^\frac{3}{2}}\, du</mrow>
+		<mrow>&amp;=\frac{1}{3}\int\cos u\, du</mrow>
+	        <mrow>&amp;=\frac{\sin u}{3}+k</mrow>
+		<mrow>&amp;=\frac{\sin(\arctan 3x)}{3}+k.</mrow>
+	      </md></p>
+	      <p>Podemos melhorar um pouco a expessão acima, lembrando
+	      que <md>
+	      <mrow>\big(\tan(\arctan x)\big)^2&amp;=x^2\implies
+	      \dfrac{\sin^2(\arctan x)}{\cos^2(\arctan x)}=x^2</mrow>
+	      <mrow>&amp;\implies \dfrac{\sin^2(\arctan
+	      x)}{1-\sin^2(\arctan x)}=x^2.</mrow></md></p>
+	      <p>Com isso,
+	      <m>\sin(\arctan x)=\dfrac{x}{\sqrt{1+x^2}}</m> e, portanto,
+	      <me>\int\frac{1}{(1+9x^2)^\frac{3}{2}}\,dx
+	      =\dfrac{x}{\sqrt{1+9x^2}}+k.</me></p></li>
+	      <li>Fazendo <m>f(x)=x\implies f'(x)=1</m> e
+	      <m>g'(x)=\sec^2(2x)\implies g(x)=\dfrac{\tan(2x)}{2}</m>,
+	      aplicamos a fórmula de integração por partes para obter
+	      <md>
+		<mrow>\int x\sec^2(2x)\, dx
+		&amp;=\dfrac{x\tan(2x)}{2}-\int\dfrac{\tan(2x)}{2}\,
+		dx</mrow>
+		<mrow>&amp;=\dfrac{x\tan(2x)}{2}+\dfrac{\ln|\cos
+		2x|}{4}+k\, dx.</mrow>
+	      </md></li>	      
+	    </ol>
+	  </li>
+	  <li><p>É fácil ver que, quando <m>x\to 0</m>, tanto numerador
+	  quando denominador, que são funções deriváveis, tendem a
+	  zero. Podemos então usar L'Hospital e, para isso precisamos
+	  derivar numerador e denominado, obtendo
+	  <md>
+	    <mrow>\frac{d}{dx}\left(\int_{0}^{x^2}e^{t^2}\,dt\right)&amp;=
+	    2xe^{x^4};</mrow>
+	    <mrow>\frac{d}{dx}\left(\int_{0}^{x}\sin(\sin
+	  t)\,dt\right)&amp;=\sin(\sin x).</mrow>
+	  </md></p>
+	  <p>Assim,
+	  <me>\lim\limits_{x\to
+	  0}\dfrac{\int_{0}^{x^2}e^{t^2}\,dt}{\int_{0}^{x}\sin(\sin
+	  t)\,dt}=\lim\limits_{x\to
+	  0}\dfrac{2xe^{x^4}}{\sin(\sin x)}=\lim\limits_{x\to
+	  0}\dfrac{2xe^{x^4}\sin(x)}{\sin(x)\sin(\sin x)}=2,</me> pois <m>\lim\limits_{x\to
+	  0}2e^{x^4}=2</m>, <m>\lim\limits_{x\to 0}\dfrac{x}{\sin
+	  x}=1</m> (fundamental) e, fazendo <m>u=\sin x</m>, temos
+	  <me>\lim\limits_{x\to 0} \dfrac{\sin(x)}{\sin(\sin
+	  x)}=\lim\limits_{u\to 0} \dfrac{u}{\sin(u)}=1.</me></p>
+	  </li>
+	</ol>
+      </solution>
+    </exercise>
+  </exercises>
+</section>
+

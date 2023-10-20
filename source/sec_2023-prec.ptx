@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_2023-prec" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Prova de Recuperação</title>
+  <exercises xml:id="gab_2023-prec" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <exercise>
+      <statement>
+        <p>Seja a função <m>f(x)=x^3-6x^2+5x+1</m>.</p>
+	<ol marker="a.">
+	  <li>Determine a equação da reta tangente ao gráfico de
+	  <m>f</m> no ponto <m>\big(1,f(1)\big)</m>.</li>
+	  <li>Determine a(s) equação(ões) da(s) reta(s) tangente(s) ao
+	  gráfico de <m>f</m> paralela(s) à reta <m>y=5x+2</m>.</li>
+	</ol>
+      </statement>
+      <solution>
+	<ol marker="a.">
+	  <li><p>A equação da reta tangente ao gráfico de uma função derivável
+	  <m>f</m> no ponto <m>\big(x_0,f(x_0)\big)</m> é
+	  <me>y=f(x_0)+f'(x_0)(x-x_0)</me>.</p>
+	  <p>Aqui temos <m>x_0=1</m> e <m>f'(x)=3x^2-12x+5</m>. Logo,
+	  <m>f(1)=1</m> e <m>f'(1)=-4</m> e então a equação da reta
+	  tangente pedida é <me>y=f(1)+f'(1)(x-1)\implies
+	  y=1-4(x-1)\implies \boxed{y=3-x}.</me></p>
+	  </li>
+	<li>Queremos determina retas que sejam paralelas a <m>y=5x+2</m>
+	e portanto devem ter o mesmo coeficiente angular. Do exposto
+	acima, devemos procurar pontos <m>x_0</m> tais que
+	<m>f'(x_0)=5</m>: <me>f'(x_0)=5\iff 3x_0^2-12x_0+5=5\iff
+	x_0=0\text{ ou }x_0=4.</me> Assim, temos os pontos
+	<m>\big(x_0,f(x_0)\big)</m> podendo ser
+	<m>\big(0,f(0)\big)=(0,1)</m> e
+	<m>\big(4,f(4)\big)=(4,-11)</m>. Além disso, temos, como
+	esperado, <m>f'(0)=f'(4)=5</m> e então as equações das retas
+	tangentes pedidas são:
+	<md>
+	  <mrow>x_0=0&amp;: y=f(0)+f'(0)(x-0)\implies
+	  \boxed{y=1+5x}</mrow>
+	  <mrow>x_0=4&amp;: y=f(4)+f'(4)(x-4)\implies \boxed{y=-31+5x}</mrow>
+	</md>
+	</li>
+	</ol>
+	
+	<p>Uma figura sempre ajuda:
+	<figure xml:id="fig_2023-precq1">
+            <image width="90%" xml:id="fig-2453-2023-precq1">
+              <latex-image>
+                \begin{tikzpicture}
+		\begin{axis}[axis lines = middle,enlargelimits,
+		xlabel = {$x$},
+		ylabel = {$y$},
+		axis on top=true]
+		\addplot[domain=-1.25:5.25,blue,samples=50] {x^3-6*x^2+5*x+1};
+		\addplot[domain=-1.25:5.25,orange,samples=50] {5*x+2} 
+		node[above,xshift=-10]{$y=5x+2$};
+		\addplot[domain=-1.25:5.25,olive,samples=50] {5*x+1}
+		node[below,xshift=-10,yshift=-15]{$y=5x+1$};
+		\addplot[domain=-1.25:5.25,olive,samples=50] {5*x-31}
+		node[below,xshift=-10,yshift=-15]{$y=5x+31$} ;
+		\end{axis}
+                \end{tikzpicture}
+              </latex-image>
+            </image>
+          </figure>
+	  </p>
+      </solution>
+    </exercise>
+    <exercise>
+      <statement>
+	<p>Decida se as seguintes afirmações são Verdadeiras ou
+	Falsas. Justifique demonstrando ou dando um contraexemplo.</p>
+	<ol marker="a.">
+	  <li>Toda função contínua em <m>p</m> é derivável em
+	  <m>p</m>.</li>
+	  <li>Se <m>f\colon\R\to\R</m> é tal que <m>|f(x)|\leq x^6</m>,
+	  para todo <m>x\in\R</m>, então <m>\lim\limits_{x\to
+	  0}\dfrac{f(x^2)}{x^6}=0</m>.</li>
+	  <li>Se <m>f</m> é uma função tal que <m>\lim\limits_{x\to
+	  0}f(x)=0</m> e <m>g</m> é uma função qualquer então <m>\lim\limits_{x\to
+	  0}f(x)g(x)=0</m>.</li>
+	  <li>Se <m>f</m> é uma função estritamente decrescente, ou
+	  seja, <m>x&lt; y\implies f(x)&lt;f(y)</m>, então
+	  <m>\lim\limits_{x\to +\infty}f(x)=-\infty</m>.</li>
+	</ol>
+      </statement>
+      <solution>
+	<ol marker="a.">
+	  <li>Falsa: o exemplo clássico de uma função contínua que não é
+	  derivável é <m>f(x)=|x|</m> em <m>p=0</m> (verifique a continuidade e a não
+	  derivabilidade de <m>f</m> nesse ponto).</li>
+	  <li>Verdadeira: da hipótese sobre <m>f</m> temos que
+	  <m>|f(x^2)|\leq (x^2)^6=x^{12}</m>. Se <m>x\neq 0</m>, podemos
+	  dividir ambos os lados por <m>x^6</m>, preservando a
+	  desigualdade, já <m>x^6&gt;0</m>, para todo 
+	  <m>x\neq 0</m>. Em símbolos,
+	  <md>
+	    <mrow>|f(x^2)|\leq
+	    (x^2)^6=x^{12}&amp;\iff \dfrac{|f(x^2)|}{x^6}\leq
+	    \dfrac{x^{12}}{x^6}</mrow>
+	    <mrow>&amp;\iff \Big|\dfrac{f(x^2)}{x^6}\Big|\leq
+	    x^6</mrow>
+	    <mrow>&amp;\iff -x^6\leq\dfrac{f(x^2)}{x^6}\leq
+	    x^6.</mrow>
+	  </md>
+	  Como <m>\lim\limits_{x\to 0}-x^6=\lim\limits_{x\to 0}x^6=0</m>
+	  temos, pelo Teorema do Confronto, que <me>\lim\limits_{x\to
+	  0}\dfrac{f(x^2)}{x^6}=0</me>.</li>
+	  <li>Falsa: basta tomar <m>f(x)=x</m> e
+	  <m>g(x)\dfrac{1}{x}</m>. Temos que <m>\lim\limits_{x\to
+	  0}f(x)=0</m> e <m>\lim\limits_{x\to 0}f(x)g(x)=1</m>.</li>
+	  <li>Falsa: a função <m>f(x)=\dfrac{1}{x}</m> é estritamente
+	  descrecente e <m>\lim\limits_{x\to +\infty}f(x)=0</m>.</li>
+	</ol>
+      </solution>
+    </exercise>
+    <exercise>
+      <statement>
+	Determine o número real positivo que, somado com seu inverso, dê
+	o menor possível. Justifique sua resposta.
+      </statement>
+      <solution>
+	<p>O exercício pede, em outras palavras, para determinar o ponto de
+	mínimo global da função <m>f(x)=x+\dfrac{1}{x}</m>, definida
+	para <m>x&gt;0</m>, que é derivável em todos os pontos.</p>
+	<p>O domínio da função é um intervalo aberto e, com isso sabemos
+	que seus pontos de máximo e mínimo devem anular a
+	derivida. Encontrtemos os candidatos:
+	<me>f'(x)=0\iff 1-\dfrac{1}{x^2}=0\iff x=\pm 1.</me> Dos
+	candidatos, o único no domínio de <m>f</m> é <m>x=1</m>. Para
+	decidir se este é um ponto de máximo ou mínimo local podemos
+	analisar o sinal da derivada num intervalo aberto contendo o
+	candidato <m>x=1</m>.</p>
+	<p>Se <m>0&lt;x&lt;1</m> temos <m>f'(x)&lt; 0</m>, garantindo
+	que a função é decrescente nesse intervalo; se <m>x&gt; 1</m>,
+	então <m>f'(x)&gt;0</m>, mostrando que <m>f</m> é crescente
+	nesse intervalo. Ou seja, <m>x=1</m> é o <em>único</em> ponto de
+	mínimo local de <m>f</m>. Esta unicidade garante que o mínimo
+	local é, na verdade, global (por que?).</p>
+
+	<p>Veja o gráfico de <m>f</m>:
+	<figure xml:id="fig_2023-precq3">
+            <image width="90%" xml:id="fig-2453-2023-precq3">
+              <latex-image>
+                \begin{tikzpicture}
+		\begin{axis}[axis lines = middle,enlargelimits,
+		xlabel = {$x$},
+		ylabel = {$y$},
+		axis on top=true]
+		\addplot[domain=0.05:4,blue,samples=100] {x+1/x};
+		\end{axis}
+                \end{tikzpicture}
+              </latex-image>
+            </image>
+          </figure>
+	  </p>
+      </solution>
+    </exercise>
+    <exercise>
+      <statement>
+	Os itens abaixo são independentes um do outro. Justifique suas
+	afirmações:
+	<ol marker="a.">
+	  <li>Calcule a seguine primitiva:
+	  <m>\displaystyle{\int\dfrac{\ln 3x}{x}\,dx}</m>.
+	  </li>
+	  <li>Seja
+	  <m>\displaystyle{f(x)=\dfrac{1}{4}+\int_1^xe^{-2t^2}\,dt}</m>. Use
+	  integração por partes para calcular <m>\displaystyle{\int_0^1
+	  f(x)\, dx}</m>.
+	  </li>
+	</ol>
+      </statement>
+      <solution>
+	<ol marker="a.">
+	  <li>Fazendo a mudança <m>u=\ln(3x)</m>, temos
+	  <m>du=\dfrac{1}{x}\, dx</m> e <me>\int\dfrac{\ln
+	  3x}{x}\,dx=\int u\, du=\dfrac{u^2}{2}+k=\dfrac{\ln^2(3x)}{2}+k</me>.
+	  </li>
+	  <li>Lembrando, a integração por partes é dada pela
+	  seguinte fórmula: <me>\int g'(x)f(x)\, dx = g(x)f(x)-\int
+	  g(x)f'(x)\, dx.</me> A fim de usá-la, sendo
+	  <m>\displaystyle{f(x)=\dfrac{1}{4}+\int_1^xe^{-2t^2}\,dt}</m>,
+	  temos que <m>f'(x)=e^{-2x^2}</m>. Consideramos também
+	  <m>g(x)=x</m>, donde <m>g'(x)=1</m>. Observe que
+	  <m>f(1)=0=g(0)</m>. Assim, 
+	  <md>
+	    <mrow>\int_0^1 f(x)\, dx=&amp; \int_0^1 g'(x)f(x)\,
+	    dx</mrow>
+	    <mrow>=&amp; \Big(g(x)f(x)\Big)_0^1-\int_0^1 g(x)f'(x)\,
+	    dx</mrow>
+	    <mrow>=&amp; g(1)f(1)-g(0)f(0)-\int_0^1
+	    xe^{-2x^2}\, dx</mrow>
+	    <mrow>=&amp;
+	    0-\Big(\dfrac{-e^{-2x^2}}{4}\Big)_0^1=\dfrac{e^{-2}-1}{4}.</mrow>
+	  </md>
+	  </li>
+	</ol>
+
+      </solution>
+    </exercise>
+    
+  </exercises>
+</section>
+

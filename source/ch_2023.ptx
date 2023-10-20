@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Chapters are enclosed with <chapter> tags. Use xml:id to -->
+<!-- uniquely identify the chapter.  The @xmlns:xi attribute  -->
+<!-- is needed if you use xi:include in this file             -->
+<chapter xml:id="ch_2023" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+<!-- Change title when you have one: -->
+  <title>Provas de 2023</title>
+  <!-- If the chapter has sections, there may be an introduction -->
+  <!-- before those sections. Note the <p> tags around content.  -->
+  <introduction>
+    <p>Neste capítulo apresentamos as soluções dos exercícios das provas
+    aplicadas em 2023, quando a Escola Politécnica optou por um
+    calendário com duas provas, enquanto nos anos anteriores eram três
+    delas. Isso implica numa alteração do programa de cada
+    avaliação.</p>
+    
+    <p>Desta vez a primeira prova aborda os conceitos de limites,
+    continuidade, derivadas (definição e regras de derivação) e
+    desdobramentos, como taxa de variação e os teoremas relacionados a
+    máximos e mínimos e estudo do crescimento de funções de uma
+    variável: Teorema do Valor Intermediário, Teorema de Weierstrass e
+    Teorema do Valor Médio.</p>
+
+    <p>Já a segunda prova retoma o Teorema do Valor Médio, com o estudo
+    da concavidade de gráficos e a Regra de L'Hospital para o cálculo de
+    alguns limites. Com todas as ferramentas vistas até este ponto é
+    possível fazer o esboço de gráficos, encerrando a parte
+    "diferencial" da disciplina. Partimos então para o estudo da
+    integral de Riemann, com sua definição e propriedades; primitivas,
+    sua existência e técnicas para determiná-las; o Teorema Fundamental
+    do Cálculo, que conecta a integral de Riemann com as
+    primitivas. Encerramos o programa com algumas aplicações desses
+    conceitos, como cálculo de comprimentos de gráficos, áreas de
+    regiões planas ou superfícies e volumes de sólidos obtidos por
+    rotações de gráficos de funções reais ao redor de retas paralelas
+    aos eixos coordenados.</p>
+  </introduction>
+
+  <!-- Sections can be written directly here, but it might help  -->
+  <!-- with organization to include them as separate files.      -->
+  <!-- That way it is easy to include the section in a different -->
+  <!-- chapter later if you change your mind about the order.    -->
+  <xi:include href="./sec_2023-p1.ptx" />
+  <xi:include href="./sec_2023-p2.ptx" />
+  <xi:include href="./sec_2023-psub.ptx" />
+  <xi:include href="./sec_2023-prec.ptx" />
+
+  <!-- One or more of the sections of a chapter might be exercises-->
+  <!-- <xi:include href="./ex_taylor.ptx" /> -->
+  <!-- <xi:include href="./ex_curvas.ptx" /> -->
+  <!-- <xi:include href="./ex_func.ptx" /> -->
+  <!-- <xi:include href="./ex_limcont.ptx" /> -->
+  <!-- <xi:include href="./ex_derdifpt.ptx" /> -->
+</chapter>

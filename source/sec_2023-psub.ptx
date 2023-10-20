@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_2023-psub" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Prova Substitutiva</title>
+  <exercises xml:id="gab_2023-psub" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <exercise>
+      <statement>
+        <p>Determine a área da região do plano entre os gráficos de
+        <m>f(x)=xe^x</m> e <m>g(x)=e^x</m>, para <m>x\in[0,2]</m>.
+	</p>
+      </statement>
+      <solution>
+	<p>Sem seque esboçar os gráficos das funções (que são
+	contínuas), percebemos que <m>f(0)=0&lt;1=g(0)</m> e
+	<m>g(1)=e&lt;2e^2=f(2)</m>, indicando que esses gráficos se
+	interceptam. Vamos encontrar trais pontos para viabilizar o
+	cálculo da área pedida: <me>f(x)=g(x)\implies xe^x=e^x\implies
+	x=1.</me> Em vista das estimativas acima e, como
+	<m>f'(x)=(1+x)e^x</m> e <m>g'(x)=e^x</m>, temos que
+	<m>f'(1)=2e&lt;e=g'(1)</m>. Isso garante que os gráficos se
+	cortam transversalmente em <m>x=1</m> e este é o único ponto
+	onde isso ocorre. Assim, se <m>0\leq x\leq 1</m>, temos
+	<m>f(x)\leq g(x)</m> e, se <m>1\leq x\leq 2</m>, temos
+	<m>f(x)\leq g(x)</m>.</p>
+	<p>Assim, a área pedida é <me>A=\int_0^1 e^x-xe^x\, dx +
+	\int_1^2 xe^x-e^x\, dx=2(e-1),</me> pois uma primitiva para
+	<m>g(x)=e^x</m> é <m>G(x)=e^k</m> (imediata) e para
+	<m>f(x)=xe^x</m> é <m>F(x)=(x-1)e^x</m>, que pode ser encontrada
+	via integração por partes:
+	<me>\int xe^x\, dx = xe^x-\int e^x\, dx = xe^x-e^x +k.</me>
+	</p>
+	
+	<p>Uma figura sempre ajuda:
+	<figure xml:id="fig_2023-psubq1">
+            <image width="90%" xml:id="fig-2453-2023-psubq1">
+              <latex-image>
+                \begin{tikzpicture}
+		\begin{axis}[axis lines = middle,enlargelimits,
+		xlabel = {$x$},
+		ylabel = {$y$},
+		axis on top=true]
+		\addplot[name path=A, domain=-0.25:2.25,blue,samples=50] {exp(x)};
+		\addplot[name path=B, domain=-0.25:2.25,orange,samples=50]
+		{x*exp(x)};
+		\addplot [teal!30] fill between [of = A and B, soft
+		  clip={domain=0:2}];
+		\end{axis}
+                \end{tikzpicture}
+              </latex-image>
+            </image>
+          </figure>
+	  </p>
+      </solution>
+    </exercise>
+
+    <exercise>
+      <statment>
+	<p>Considere <m>f(x)=\dfrac{3\ln x}{x}</m>.
+	<ol marker="a.">
+	  <li>Determine o domínio de <m>f</m>, bem como <m>\lim\limits_{x\to
+	  0^+}f(x)</m> e <m>\lim\limits_{x\to +\infty}f(x)</m>.</li>
+	  <li>Determine os intervalos de crescimento e decrescimento de
+	  <m>f</m>, explicitanto seus pontos de máximo e mínimo (locais e
+	  globais), se existirem.</li>
+	  <li>Quantas soluções tem a equação <m>3\ln(x) - x=0</m>?
+	  Justifique.</li>
+	</ol></p>
+      </statment>
+      <solution>
+	<p>
+	  <ol marker="a.">
+	    <li><p>O domínio de <m>f</m> é determinado pelo lorgaritmo e o
+	    quociente, então <m>D_f=\{x\in\mathbb{R}\colon x&gt;
+	    0\}</m></p>
+	    <p><m>\lim\limits_{x\to 0^+}\dfrac{3\ln x}{x}=-\infty</m>,
+	    pois <m>\lim\limits_{x\to 0^+}3\ln x=-\infty</m> e
+	    <m>\lim\limits_{x\to 0^+} x=0</m>.</p>
+	    <p><m>\lim\limits_{x\to +\infty}\dfrac{3\ln x}{x}=0</m>,
+	    obtido usando-se a regra de L'Hospital:
+	    <me>\lim\limits_{x\to+\infty}\dfrac{3\ln
+	    x}{x}=\lim\limits_{x\to+\infty}\dfrac{3}{x}=0.</me></p>
+	    </li>
+	    <li><p>O crescimento de <m>f</m> é dado pelo sinal de
+	    <m>f'</m>: <me>f'(x)=\dfrac{3(1-\ln x)}{x^2}&gt;0\iff
+	    0&lt;x&lt;e.</me> Assim <m>f</m> é crescente no intervalo
+	    <m>(0,e)</m> e decrescente no intervalo
+	    <m>(e,+\infty)</m>.</p>
+	    <p>Com isso e os resultados do item anterior, temos que
+	    <m>x=e</m> é o único ponto de máximo (global), onde
+	    <m>f(e)=\dfrac{3}{e}</m> que não existem pontos de mínimo
+	    (locais ou globais) para <m>f</m>.</p>
+	    </li>
+	    <li>A equação <m>3\ln(x) - x=0</m> pode ser escrita como
+	    <m>f(x)=1</m>. Como o valor máximo de <m>f</m> é
+	    <m>f(e)=\dfrac{3}{e}&lt; 1</m>, considerando o crescimento
+	    de <m>f</m> estudado acima, temos que existem dois valores
+	    de <m>x</m> tais que <m>f(x)=1</m>, um menor e outro maior
+	    que <m>e</m>. Veja no gráfico (desnecessário para resolver o
+	    exercício):
+	    <figure xml:id="fig_2023-psubq2">
+              <image width="90%" xml:id="fig-2453-2023-psubq2">
+		<latex-image>
+                  \begin{tikzpicture}
+		  \begin{axis}[axis lines = middle,enlargelimits,
+		  xlabel = {$x$},
+		  ylabel = {$y$},
+		  axis on top=true]
+		  \addplot[domain=0.5:10,blue,samples=50] {3*ln(x)/x};
+		  \addplot[domain=-0.5:10] {1};
+		  \end{axis}
+                  \end{tikzpicture}
+		</latex-image>
+              </image>
+            </figure></li>
+	  </ol>
+	</p>
+      </solution>
+    </exercise>
+
+    <exercise>
+      <statement>
+	<p>Seja <m>f(x)=\begin{cases}
+	\hfill (x-1)\sin(x-1)\cos\Big(\dfrac{\sqrt{x^4+x^2}}{x-1}\Big),&amp;\text{ se }x&lt;1;\\
+	\hfill \sqrt{x}-1,&amp;\text{ se }x\geq 1.
+	\end{cases}</m>
+	
+	<ol marker="a.">
+	  <li><m>f</m> é contínua em <m>x=1</m>?</li>
+	  <li><m>f</m> é derivável em <m>x=1</m>?</li>
+	</ol>
+	</p>
+      </statement>
+      <solution>
+	<ol marker="a.">
+	  <li><p>Para que <m>f</m> seja contínua em <m>x=1</m> devemos ter
+	  <m>\lim\limits_{x\to 1}f(x)=f(1)=0</m>. Para que esse limite
+	  exista, precisamos calcular seus laterais, que devem ser igual
+	  entre si. Se este valor for igual a <m>f(1)=0</m>, então
+	  <m>f</m> será contínua no ponto em questão. Às contas:
+	  <ul>
+	    <li><m>\lim\limits_{x\to 1^+}f(x)=\lim\limits_{x\to
+	    1^+}\sqrt{x}-1=0</m>;</li>
+	    <li><m>\lim\limits_{x\to 1^-}f(x)=\lim\limits_{x\to
+	    1^-}(x-1)\sin(x-1)\cos\Big(\dfrac{\sqrt{x^4+x^2}}{x-1}\Big)=0</m>,
+	    pois o último fator é limitado e os dois primeiros tendem a
+	    zero.
+	    </li>
+	  </ul></p>
+	  <p>Assim, temos que <m>f</m> tem limite em <m>x=1</m> e
+	  <m>\lim\limits_{x\to 1}f(x)=f(1)=0</m>, mostrando sua
+	  continuidade nesse ponto.</p>
+	  </li>
+	  <li><p>Uma vez verificada a continuidade acima, podemos verificar
+	  a derivabilidade, também pela definição. Aqui, faz-se
+	  necessário estudo dos limite laterais que definem a derivada
+	  de <m>f</m>:
+	  <ul>
+	    <li><m>\lim\limits_{x\to 1^+}\dfrac{f(x)-f(1)}{x-1}=\lim\limits_{x\to
+	      1^+}\dfrac{\sqrt{x}-1}{x-1}=\lim\limits_{x\to
+	    1^+}\dfrac{1}{\sqrt{x}+1}=\dfrac{1}{2}</m>;</li>
+	    <li><md>
+	      <mrow>\lim\limits_{x\to 1^-}\dfrac{f(x)-f(1)}{x-1}&amp;=\lim\limits_{x\to
+	      1^-}\dfrac{(x-1)\sin(x-1)\cos\Big(\dfrac{\sqrt{x^4+x^2}}{x-1}\Big)}{x-1}</mrow>
+	      <mrow>&amp;=\lim\limits_{x\to
+	    1^+}\sin(x-1)\cos\Big(\dfrac{\sqrt{x^4+x^2}}{x-1}\Big)=0</mrow></md>,
+	    pois o último fator é limitado e o primeiro tende a zero.</li>
+	  </ul></p>
+	  <p>Com os valores distintos acima, temos que
+	  <m>\lim\limits_{x\to 1}\dfrac{f(x)-f(1)}{x-1}</m> não existe e
+	  portanto <m>f</m> não é derivável em <m>x=1</m>.</p>
+	  </li>
+	</ol>
+	<p>Vejamos isso tudo graficamente:
+	<figure xml:id="fig_2023-psubq3">
+          <image width="90%" xml:id="fig-2453-2023-psubq3">
+	    <sageplot>
+	      f=piecewise([((-2,1),
+	      (x-1)*sin(x-1)*cos(sqrt(x^4+x^2)/(x-1))), ([1,2.5],
+	      -1+sqrt(x))])
+	      a=plot(f,(x,-0.5,2.5),aspect_ratio=1)
+	      b=plot(f,(x,.9,1.1),frame=True,transparent=True,aspect_ratio=1,exclude=[1]);
+	      multi_graphics([a,(b,(0.5,0.5,0.5,0.5))])
+	    </sageplot>
+          </image>
+        </figure>
+	</p>
+      </solution>
+    </exercise>
+
+    <exercise>
+      <statement>
+	<p>Calcule:
+	<ol marker="a.">
+	  <li><m>\lim\limits_{x\to +\infty}\sqrt{x^2+5x}-x</m>;</li>
+	  <li><m>\lim\limits_{x\to 0^+}(x+1)^{\frac{1}{\sin
+	  x}}</m>;</li>
+	  <li><m>\displaystyle{\int\sec^4x\tan x\, dx}</m>.</li>
+	</ol>
+	</p>
+      </statement>
+      <solution>
+	<p>
+	  <ol marker="a.">
+	    <li><md>
+	      <mrow>\lim\limits_{x\to+\infty}\sqrt{x^2+5x}-x
+	      &amp;=\lim\limits_{x\to+\infty}\dfrac{5x}{\sqrt{x^2+5x}+x}</mrow>
+	      <mrow>&amp;=\lim\limits_{x\to+\infty}\dfrac{5}{\sqrt{1+5/x^2}+1}
+	      =\dfrac{5}{2},</mrow>
+	    </md> onde multiplicamos e dividimos por
+	    <m>\sqrt{x^2+5x}+x</m>, fatoramos <m>x</m> que simplificou
+	    com o denominador e usamos que
+	    <m>\lim\limits_{x\to+\infty}\dfrac{5}{x^2}=0</m>;</li>
+	    <li><md> <mrow>\lim\limits_{x\to 0^+}(x+1)^{\dfrac{1}{\sin
+	    x}}&amp;=\lim\limits_{x\to 0^+}e^{\dfrac{1}{\sin
+	    x}\ln(x+1)}</mrow> <mrow>&amp;=e^{\lim\limits_{x\to\,
+	    0^+}\dfrac{\ln(x+1)}{\sin x}}</mrow>
+	    <mrow>&amp;=e^{\lim\limits_{x\to\, 0^+}\dfrac{1}{(x+1)\cos
+	    x}}=e^1=e,</mrow> </md> onde a indeterminação do tipo
+	    "<m>1^{+\infty}</m>" foi transformada numa do tipo
+	    "<m>e^{0/0}</m>", usamos que a exponencial é
+	    contínua para que o limite "subisse" para dentro da
+	    exponencial e então aplicamos a regra de L'Hospital;</li>
+	  <li>Fazendo <m>u=\sec(x)</m>, temos <m>du=\sec(x)\tan(x)\,
+	  dx</m> e então
+	  <me>\int\sec^4x\tan x\, dx=\int u^3\, du=\dfrac{u^4}{4}+k=\dfrac{\sec^4x}{4}+k</me>.</li>
+	</ol>
+	</p>
+      </solution>
+    </exercise>
+  </exercises>
+</section>
+
