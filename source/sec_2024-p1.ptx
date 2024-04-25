@@ -143,7 +143,7 @@
 	  3^-}8-3x=8 - 9 = -1\neq \lim_{x \to 3^+} g(x),</me> logo
 	  <m>g</m> não é contínua em <m>p=3</m>.</p>
 	  <p>Agora,
-	  <me>\lim_{x \to 1^+} g(x) = \lim_{x \to 1^+} 8 - 3x = 5 \lim_{x \to 1^-} g(x) = \lim_{x \to 1^-} -x^3-(x-1)^2,</me>
+	  <me>\lim_{x \to 1^+} g(x) = \lim_{x \to 1^+} 8 - 3x = 5 = \lim_{x \to 1^-} g(x) = \lim_{x \to 1^-} -x^3-(x-1)^2+6,</me>
 	  donde <m>\lim\limits_{x \to 1} g(x)=5=g(1)</m> e 
 	  portanto <m>g</m> é continua em <m>p=1</m>.</p></li>
 	  <li><p>A diferenciabilidade de <m>g</m> em
@@ -179,122 +179,206 @@
               multi_graphics([a,(b,(0.7,.7,0.25,0.25))])
             </sageplot>
           </image>
-        </figure>
-
-	<!-- <sage> -->
-	<!--   <input> -->
-	<!--     g = piecewise([((-infinty,1), -->
-	<!--       -x^3-(x-1)^2+6),([1,3],8-3*x),([3,infinity),x^2-9*x)]); -->
-	<!--       a=plot(f,(x,-3,5),color="blue",aspect_ratio=1) -->
-	<!--       b=plot(f, (x,-0.75, -->
-	<!--       1.25),color="blue",frame=True,transparent=True) -->
-	<!--       c=plot(f, (x,2.75, -->
-	<!--       3.25),color="blue",frame=True,transparent=True,aspect_ratio=1) -->
-	<!--       multi_graphics([a,(b,(0.15,0.7,0.25,0.25)),(c,(.7,.15,.25,.25))]) -->
-	<!--   </input> -->
-	<!-- </sage> --></p>
+        </figure></p>
+	<p>As contas no Sage, primeiro em <m>p=1</m> (usando um
+	exercício teórico da lista sobre a derivabilidade de funções
+	definidas por múltiplas sentenças - isso simplifica demais a
+	implementação):
+	<sage>
+	  <input>
+	    #Definindo a variável e um delta para analisar
+	    #os pontos de "cola" na definição:
+	    x=var('x')
+	    delta=10^(-10)
+	    # Definindo a função g por partes:
+	    g(x) = piecewise([((-infinity,1),-x^3-(x-1)^2+6),(RealSet.closed_open(1,3),8-3*x),(RealSet.closed_open(3,infinity),x^2-9*x)]);
+	    # Trechos para análise dos limites laterais em p=1:
+	    g1=g.expression_at(1-delta)
+	    g2=g.expression_at(1+delta)
+	    show(LatexExpr("\\lim_{x\\to 1^-}g(x)=\\lim_{x\\to 1^-}"),g1,LatexExpr("="),g1.limit(x=1,dir="-"))
+	    show(LatexExpr("\\lim_{x\\to 1^+}g(x)=\\lim_{x\\to 1^+}"),g2,LatexExpr("="),g2.limit(x=1,dir="+"))
+	    show(LatexExpr("\\lim_{x\\to 1^-}\\dfrac{g(x)-g(1)}{x-1}=\\lim_{x\\to 1^-}\\dfrac{"),g1,LatexExpr("-5}{x-1}="),g1.diff(x).subs(x=1))
+	    show(LatexExpr("\\lim_{x\\to 1^+}\\dfrac{g(x)-g(1)}{x-1}=\\lim_{x\\to 1^+}\\dfrac{"),g2,LatexExpr("-5}{x-1}="),g2.diff(x).subs(x=1))
+	  </input>
+	</sage></p>
+	<p>Agora em <m>p=3</m>:
+		<sage>
+	  <input>
+	    #Definindo a variável e um delta para analisar
+	    #os pontos de "cola" na definição:
+	    x=var('x')
+	    delta=10^(-10)
+	    # Definindo a função g por partes:
+	    g(x) = piecewise([((-infinity,1),-x^3-(x-1)^2+6),(RealSet.closed_open(1,3),8-3*x),(RealSet.closed_open(3,infinity),x^2-9*x)]);
+	    # Trechos para análise dos limites laterais em p=1:
+	    g1=g.expression_at(3-delta)
+	    g2=g.expression_at(3+delta)
+	    show(LatexExpr("\\lim_{x\\to 3^-}g(x)=\\lim_{x\\to 3^-}"),g1,LatexExpr("="),g1.limit(x=3,dir="+"))
+	    show(LatexExpr("\\lim_{x\\to 3^+}g(x)=\\lim_{x\\to 3^+}"),g2,LatexExpr("="),g2.limit(x=3,dir="-"))
+	  </input>
+	</sage></p>
       </solution>
     </exercise>
 
-    <!-- <exercise number="3"  xml:id="mat2453-2023-p1q3"> -->
-    <!--   <statement> -->
-    <!-- 	<p>Seja <m>f\colon ]0,+\infty[\to\R</m> dada por -->
-    <!-- 	<m>f(x)=e^{\frac{3}{x}}</m>. -->
-    <!-- 	<ol marker="a."> -->
-    <!-- 	  <li>Mostre que <m>f</m> é (estritamente) decrescente e calcule -->
-    <!-- 	  <m>\lim\limits_{x\to 0^+}f(x)</m>, bem como -->
-    <!-- 	  <m>\lim\limits_{x\to+\infty}f(x)</m>.</li> -->
-    <!-- 	  <li>Determine a equação da reta tangente ao gráfico de -->
-    <!-- 	  <m>f</m> no ponto <m>\big(p,f(p)\big)</m>.</li> -->
-    <!-- 	  <li>Considere o triângulo retângulo formado pelos semi-eixos -->
-    <!-- 	  positivos e a reta tangente ao gráfico de <m>f</m> no ponto -->
-    <!-- 	  <m>\big(p,f(p)\big)</m>. Escreva, em função de <m>p</m>, a -->
-    <!-- 	  área desse triângulo.</li> -->
-    <!-- 	  <li>Determine <m>p>0</m> para que essa seja a menor área -->
-    <!-- 	  possível.</li> -->
-    <!-- 	</ol> -->
-    <!-- 	</p> -->
-	
-    <!--   </statement> -->
-    <!--   <solution> -->
-    <!-- 	<p> -->
-    <!--       <ol marker="a."> -->
-    <!-- 	    <li><p>Como <m>f</m> é derivável em todos os pontos do seu -->
-    <!-- 	    domínio, que é um intervalo aberto, podemos estudar seu -->
-    <!-- 	    crescimento através do sinal da primeira deivada: -->
-    <!-- 	    <me>f'(x)=\dfrac{-3e^{3/x}}{x^2}&lt;0, \text{ para todo -->
-    <!-- 	    }x\in]0,+\infty[,</me> garantindo que <m>f</m> é decrescente -->
-    <!-- 	    em todo o seu domínio.</p> -->
-    <!-- 	    <p>Aos limites: -->
-    <!-- 	    <ul> -->
-    <!-- 	      <li><m>\lim\limits_{x\to 0^+}f(x)=\lim\limits_{x\to -->
-    <!-- 	      0^+}e^{3/x}=e^{\lim\limits_{x\to\;0^+}\frac{3}{x}}=+\infty</m>, -->
-    <!-- 	      pois a função exponencial é contínua, <m>\lim\limits_{x\to -->
-    <!-- 	      0^+}\dfrac{3}{x}=+\infty</m> e -->
-    <!-- 	      <m>\lim\limits_{y\to+\infty}e^y=+\infty</m>. -->
-    <!-- 	      </li> -->
-    <!-- 	      <li>Notando que -->
-    <!-- 	      <m>\lim\limits_{x\to+\infty}\dfrac{3}{x}=0</m>, com os -->
-    <!-- 	      mesmos argumentos utilizados acima, temos -->
-    <!-- 	      <m>\lim\limits_{x\to +\infty}f(x)=\lim\limits_{x\to -->
-    <!-- 	      +\infty}e^{3/x}=e^{\lim\limits_{x\to\;+\infty}\frac{3}{x}}=e^0=1</m>.</li> -->
-    <!-- 	    </ul></p> -->
-    <!-- 	    </li> -->
-    <!-- 	    <li><p>Em geral, a equação da reta tangente ao gráfico de uma -->
-    <!-- 	    função derivável no ponto <m>\big(p,f(p)\big)</m> é -->
-    <!-- 	    <me>y=f(p)+f'(p)(x-p).</me></p> -->
-    <!-- 	    <p>Neste caso temos <m>f(p)=e^{3/p}</m> e -->
-    <!-- 	    <m>f'(p)=\dfrac{3e^{3/p}}{p^2}</m>. Assim, a equação da reta -->
-    <!-- 	    tangente pedida é -->
-    <!-- 	    <me>y=e^{3/p}-\frac{3e^{3/p}}{p^2}(x-p)\implies y= -->
-    <!-- 	    -\dfrac{3e^{3/p}}{p^2}x+\frac{e^{3/p}}{p}(p+3).</me></p></li> -->
-    <!-- 	    <li><p>O triângulo descrito tem como vértices a origem e os -->
-    <!-- 	    interceptos da reta obtida acima com os eixos -->
-    <!-- 	    coordenados. Vamos determinar tais interceptos: -->
-    <!-- 	    <ul> -->
-    <!-- 	      <li><p><m>x=0</m>: <m>y=\frac{e^{3/p}}{p}(p+3)</m></p></li> -->
-    <!-- 	      <li><p><m>y=0</m>: <m>x=\frac{p}{3}(p+3)</m></p></li> -->
-    <!-- 	    </ul> -->
-    <!-- 	    A área do triângulo, para cada <m>p&gt;0</m>, é -->
-    <!-- 	    <me>A(p)=\frac{1}{2}\cdot\frac{e^{3/p}}{p}(p+3)\cdot -->
-    <!-- 	    \frac{p}{3}(p+3)=\frac{(p+3)^2e^{3/p}}{6}.</me></p> -->
-    <!-- 	    </li> -->
-    <!-- 	    <li><p>Como a função área está definida no intervalo aberto -->
-    <!-- 	    <m>]0,+\infty[</m>, os candidatos a ponto de mínimo, são -->
-    <!-- 	    aqueles onde <m>A'(p)=0</m>. A derivada de <m>A(p)</m> é -->
-    <!-- 	    <me>A'(p)=\frac{(p+3)}{3}e^{3/p}-\frac{(p+3)^2}{2p^2}e^{3/p}= -->
-    <!-- 	    \frac{e^{3/p}(p+3)}{6p^2}\big(2p^2-3(p+3)\big)</me></p> -->
-    <!-- 	    <p>Então <me>A'(p)=0\iff 2p^2-3p-9=0\iff p=3.</me>Observamos -->
-    <!-- 	    que, para <m>0&lt; p&lt; 3</m>, temos <m>A'(p)&lt; 0</m> -->
-    <!-- 	    (<m>A</m> é decrescente nesse intervalo), e -->
-    <!-- 	    para <m>p&gt; 3</m>, vale que <m>A'(p)&gt; 0</m> (<m>A</m> é -->
-    <!-- 	    crescente nesse intervalo). Logo <m>p=3</m> é ponto de -->
-    <!-- 	    mínimo global da área.</p> -->
-    <!-- 	    <p>A título de curiosidade a área mínima é -->
-    <!-- 	    <m>A(3)=6e</m>.</p> -->
-    <!-- 	    <p>Ainda não temos todas as ferramentas para construir o -->
-    <!-- 	    gráficos das funções que aparecem aqui, mas aqui estão: -->
-    <!-- 	    <figure xml:id="fig_2023-p1q3"> -->
-    <!-- 	      <caption>Os gráficos de <m>f</m>, <m>A</m> <m>A'</m>, além -->
-    <!-- 	      do triângulo de área mínima.</caption> -->
-    <!-- 	      <image xml:id="fig-2023-p1q3" width="90%"> -->
-    <!-- 		<description>Os gráficos de <m>f</m> e <m>f'</m></description> -->
-    <!-- 		<sageplot> -->
-    <!-- 		  h=exp(3/x) -->
-    <!-- 		  A=(x+3)^2*exp(3/x)/6 -->
-    <!-- 		  dA=diff(A,x) -->
-    <!-- 		  ph=plot(h,(x,1,20))+text("$f(x)$",(21,exp(1/7))) -->
-    <!-- 		  pA=plot(A,(x,1.5,7), color="green")+text("$A(p)$",(8,100*exp(3/7)/6),color="green") -->
-    <!-- 		  pl=polygon([(0,0),(0,2*exp(1)),(6,0)],color="green",alpha=2/5) -->
-    <!-- 		  pdA=plot(dA,(x,2,20),color="red")+text("$A'(p)$",(21.5,exp(3/21.5)*(21.5+3)/(2*3*21.5^2)*(2*21.5^2-21.5*3-3^2)),color="red") -->
-    <!-- 		  ph+pl+pdA+pA+line([(3,25),(3,-5)],linestyle="-\-",color="orange") -->
-    <!-- 		</sageplot> -->
-    <!-- 	      </image> -->
-    <!-- 	    </figure></p></li> -->
-    <!-- 	  </ol> -->
-    <!-- 	</p> -->
-    <!--   </solution> -->
-    <!-- </exercise> -->
+    <exercise>
+      <statement>
+	<p>Considere a curva no plano <m>(x,y)</m> dada por
+	<me>y^3+y+2xy = 2\cos (x).</me>
+	<ol marker="a.">
+	  <li>Mostre que para <m>x=0</m>, devemos ter <m>y=1</m> como única
+	  solução na equação acima.</li>
+	  <li>Seja <m>y=f(x)</m> uma função derivável definida em um
+	  intervalo aberto <m>I</m> implicitamente pela equação
+	  acima. Determine uma equação para a reta tangente ao gráfico
+	  de <m>f</m> no ponto <m>\big(0, f(0)\big)</m>.</li>
+	</ol>
+	</p>
+      </statement>
+      <answer>
+	<ol marker="a.">
+	  <li>Veja a solução abaixo.</li>
+	  <li><m>y=1-\sfrac{x}{2}</m>.</li>
+	</ol>
+      </answer>
+      <solution>
+	<p>
+          <ol marker="a.">
+	    <li><p>Fazendo <m>x=0</m> na equação dada, temos
+	    <me>y^3+y-2=0,</me> donde inferimos que <m>y=1</m> é uma
+	    solução e portanto <me>y^3+y-2=0\iff (y-1)(y^2+y+2)=0.</me>
+	    Como <m>y^2+y+2\neq0</m> para todo <m>y\in\R</m> (pois o
+	    discriminantes da equação é negativo), temos que a única
+	    solução real da equação <m>y^3+y-2=0</m> é <m>y=1</m>.</p>
+	    </li>
+	    <li><p>Fazendo <m>y=f(x)</m> na equação dada temos
+	    <me>\big(f(x)\big)^3+f(x)+2xf(x)=2\cos(x).</me> Derivado dos
+	    dois lados temos
+	    <me>3\big(f(x)\big)^2f'(x)+f'(x)+2f(x)+2xf'(x)=-2\sin(x).</me>
+	    Do item anterior temos que <m>f(0)=1</m>. Então, para
+	    <m>x=0</m> a última equação acima fica
+	    <me>3f'(0)+f'(0)+2=0\implies f'(0)=-\frac{1}{2}.</me> Assim,
+	    a reta tangente no ponto pedido é dada por
+	    <m>y=f(0)+f'(0)(x-0)</m>, ou seja,
+	    <m>y=1-\sfrac{x}{2}</m>.</p></li>
+	  </ol>
+	</p>
+	<p>Graficamente,
+	<figure xml:id="fig_2024-p1q3">
+	  <caption>A curva <m>y^3+y+xy=2\cos(x)</m> e a tangente
+	  no ponto <m>(0,1)</m>.</caption>
+	  <image xml:id="fig-2024-p1q3" width="90%">
+	    <description>A curva <m>y^3+y+xy=2\cos(x)</m> e sua tangente
+	    no ponto <m>(0,1)</m>.</description>
+	    <sageplot>
+	      x,y=var("x","y")
+	      implicit_plot(y^3+y+2*x*y-2*cos(x),(x,-2,2),(y,-2,2))+line([(-2,2),(2,0)],color="orange")
+	    </sageplot>
+	  </image>
+	</figure>
+	Note que não podemos garantir (e nem é verdade nesse caso)
+	que a equação define uma função para todo <m>x\in\R</m>.
+	</p>
+	<p>No SageMath:
+	<sage>
+	  <input>
+	    x = var('x')
+	    y = function("y")(x)
+	    eq = y^3+y+2*x*y == 2*cos(x)
+	    dy = diff(y,x)
+	    sol = solve(diff(eq,x), dy)
+	    show(LatexExpr("y'(x)="),dy.subs(sol))
+	    show(LatexExpr("y'(0)="),dy.subs(sol).subs(x=0))
+	  </input>
+	</sage>
+	</p>
+	  
+      </solution>
+    </exercise>
+
+    <exercise>
+      <statement>
+	<p>Um avião voa com a trajetória no tempo <m>t \geq 0</m> (em
+	minutos) descrita pelo o gráfico da função
+	<me>f(t)=\frac{1}{(2t+1)^2},</me>medida em quilômetros.
+	<ol marker="a.">
+	  <li>Encontre a equação da reta tangente ao gráfico de <m>f(t)</m>
+	  no ponto <m>t=2</m>.</li>
+	  <li>Descreva a equação da reta tangente ao gráfico de <m>f(t)</m>
+	  no ponto <m>t=T</m>, em termos do parâmetro <m>T</m>.</li>
+	  <li>Se a tripulação pretende lançar uma carga do avião que
+	  atinja o solo no ponto <m>(20,0)</m>, assumindo que a carga
+	  percorre uma trajetória reta na direção que o avião aponta no
+	  momento que é lançado, encontre o tempo <m>T</m> no qual o
+	  piloto deve soltar a carga para que ela atinja o solo no ponto
+	  desejado.</li>
+	</ol></p>
+      </statement>
+      <answer>
+	<ol marker="a.">
+	  <li><m>y=\dfrac{1}{25}-\dfrac{4(x-2)}{125}</m>;</li>
+	  <li><m>y=\dfrac{1}{(2T+1)^2}-\dfrac{4(x-T)}{(2T+1)^3}</m>;</li>
+	  <li><m>\dfrac{79}{6}</m></li>
+	</ol>
+      </answer>
+      <solution>
+	<p>Uma representação gráfica da situação nos ajuda a modelar o
+	problema:
+	<figure xml:id="fig_2024-p1q4">
+	  <caption>A trajetória do avião e o instante <m>T</m>.</caption>
+	  <image xml:id="fig-2024-p1q4" width="90%">
+	    <description>A trajetória do avião e o instante
+	    <m>T</m>.</description>
+	    <sageplot>
+	      f(x)=1/(2*x+1)^2
+	      plot(f(x),(x,6,20))+line([(79/6,f(79/6)),(20,0)],color="orange")+line([(79/6,f(79/6)),(79/6,0)],color="orange",linestyle="dashed")+plot(point((79/6,f(79/6)),size=15))+text("$T$",(79/6,-0.0005),color="black")
+	    </sageplot>
+	  </image>
+	</figure></p>
+	<p>
+	<ol marker="a.">
+	  <li>Para escrever a equação da reta pedida precisamos de
+	  <m>f(2)=\dfrac{1}{25}</m> e <m>f'(2)</m>: <me>f'(t) =
+	  \frac{-2}{(2t + 1)^3}\cdot 2 = 
+	  \frac{-4}{(2t + 1)^3}\implies f'(2)=-\dfrac{4}{125}.</me>
+	  Assim, <m>f'(2) = 
+	  \sfrac{-4}{125}</m>. Portanto a equação da reta tangente é:
+	  <me>y=f(2)+f'(2)(x-2)\implies y=
+	  \frac{1}{25}-\frac{4}{125}(t-2).</me></li>
+	  <li>Repetimos as ideias acima para um <m>T&gt;0</m>
+	  arbitrário: 
+	  <me>y = f(T)+f'(T)(t - T)\implies y=
+	  \frac{1}{(2T+1)^2}-\frac{4}{(2T+1)^3}(t - T).</me></li> 
+	  <li>Agora procuramos <m>T&gt; 0</m> tal que a reta tangente em
+	  <m>\big(T,f(T)\big)</m> passe por <m>(20,0)</m>. Substituindo
+	  essas coodenadas na equação acima temos
+	  <md>
+	    <mrow> 0 &amp; = -\frac{4}{(2T + 1)^3}(20 - T) +
+	    \frac{1}{(2T+1)^2}\implies</mrow>
+	    <mrow>0 &amp;=  \frac{1}{(2T+1)^2} \left(-\frac{4}{(2T +
+	    1)}(20 - T) + 1 \right)\implies</mrow>
+	    <mrow>0 &amp;=  -\frac{4}{(2T + 1)}(20 - T) +
+	    1\implies</mrow>
+	    <mrow>T&amp;=\frac{79}{6}</mrow>
+	  </md>
+	  </li>
+	</ol>
+	</p>
+	<p>No SageMath:
+	<sage>
+	  <input>
+	    t,p,T=var('t','p','T')
+	    f(t)=1/(2*t+1)^2
+	    show(LatexExpr("f'(t)="),diff(f(t),t))
+	    y=f(p)+diff(f(t),t).subs(t=p)*(t-p)
+	    show(LatexExpr("y=f(2)+f'(2)(t-2)\\implies y="),y.subs(p=2))
+	    retagen=y.subs(p=T)
+	    show(LatexExpr("y=f(T)+f'(T)(t-T)\\implies y="),retagen)
+	    show(retagen.subs(y=0,t=20)==0,LatexExpr("\\implies"),solve(retagen.subs(y=0,t=20)==0,T)[0])
+	  </input>
+	</sage>
+	</p>
+      </solution>
+    </exercise>
   </exercises>
 
   <!-- <assemblage xml:id="asm_first-examples-summary"> -->
