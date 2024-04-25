@@ -27,7 +27,9 @@
     <!-- possible structure of the book.  Once you know what the   -->
     <!-- title of the chapter is, rename the file something based  -->
     <!-- on the title (ch-shorttitle.ptx) both here and on disk    -->
+    <xi:include href="./ch_2024.ptx" />
     <xi:include href="./ch_2023.ptx" />
+    <xi:include href="./ch_anteriores.ptx" />
     <!-- <xi:include href="./ch_p1-2022.ptx" /> -->
     <!-- <xi:include href="./ch_lista2.ptx" /> -->
     <!-- <xi:include href="./ch_p2-2022.ptx" /> -->
