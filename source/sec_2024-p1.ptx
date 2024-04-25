@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_2024-p1" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Primeira Prova</title>
+  <exercises xml:id="gab_2024-p1" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <exercise>
+      <statement>
+	<p>Decida se os limites abaixo existem e calcule-os em caso
+	afirmativo.  Justifique sua resposta.
+	<ol marker="a." cols="2">
+	  <li><m>\lim\limits_{x \to -\infty}
+	  \dfrac{\sqrt{4x^2+5x+6}}{\sqrt[3]{8x^3+2x^2+7}}</m>;</li>
+	  <li><m>\lim\limits_{x \to 2} \dfrac{\sin(x^2 - 6x + 8)}{x^3 -
+	  8}</m>.</li>
+	</ol>
+	</p>
+      </statement>
+      <answer>
+	<ol marker="a." cols="2">
+	  <li><m>-1</m>;</li>
+	  <li><m>-\sfrac{1}{6}</m>.</li>
+	</ol>
+      </answer>
+      <solution>
+	<ol marker="a.">
+	  <li><p>Observamos inicialmente que, quando fazemos <m>x \to
+	  -\infty</m>, consideramos <m>x&lt;0</m>, para o qual
+	  <m>\sqrt{x^2} = |x| = -x</m> . Assim,
+	  <md>
+	    <mrow>\lim_{x \to -\infty}
+	    \frac{\sqrt{4x^2+5x+6}}{\sqrt[3]{8x^3+2x^2+7}} &amp;=
+	    \lim_{x \to -\infty} \frac{\sqrt{x^2}\sqrt{4+ \sfrac{5}{x}+
+	    \sfrac{6}{x^2}}}{\sqrt[3]{x^3}\sqrt[3]{8+ \sfrac{2}{x}+
+	    \sfrac{7}{x^3}}}</mrow>
+	    <mrow>&amp;=
+	    \lim_{x \to -\infty} \frac{-x\sqrt{4+ \sfrac{5}{x}+
+	    \sfrac{6}{x^2}}}{x\sqrt[3]{8+ \sfrac{2}{x}+
+	    \sfrac{7}{x^3}}}</mrow>
+	    <mrow>&amp;=\frac{-\sqrt{4}}{\sqrt[3]{8}} =
+	    -1.</mrow></md></p>
+	  </li>
+	  <li><p>Temos que:
+	  <md>
+	    <mrow>\frac{\sin(x^2 - 6x + 8)}{x^3 - 8}
+	    &amp;=\frac{\sin(x^2 - 6x + 8)}{(x^2 - 6x + 8)}
+	    \frac{(x^2 - 6x + 8)}{x^3 - 8}</mrow>
+	    <mrow>&amp;=\frac{\sin(x^2-6x+8)}{(x^2-6x+8)}
+	    \frac{(x-2)(x-4)}{(x-2)(x^2 + 2x + 4)}.</mrow>
+	  </md></p>
+	  <p>Assim,
+	  <md>
+	    <mrow>\lim_{x \to 2} \frac{\sin(x^2 - 6x + 8)}{x^3 - 8}
+	    &amp; =\lim_{x \to 2} \left( \frac{\sin(x^2 - 6x + 8)}{(x^2 - 6x +
+	    8)}\frac{(x-4)}{(x^2 + 2x + 4)} \right)</mrow>
+	    <mrow>&amp;\stackrel{(\ast)}{=}\left(\lim_{y \to 0}
+	    \frac{\sin(y)}{y} \right) \cdot \left(\lim_{x \to 2}
+	    \frac{(x-4)}{(x^2 + 2x + 4)}\right)</mrow> 
+	    <mrow>&amp; = 1 \cdot (\frac{-2}{12}) = -\frac{1}{6},</mrow>
+	  </md>
+	  onde, em <m>(\ast)</m> fizemos a mudança <m>y=x^2-6x+8</m>, a
+	  qual é dada por uma função contínua e verifica <m>x\to 2\iff
+	  y\to 0</m>. Também usamos que cada um dos fatores tem limite
+	  finito e portanto o limite do produto é o produto dos
+	  limites.</p>
+	  </li>
+	</ol>
+	<p>Podemos calcular tudo no SageMath:
+	<sage>
+	  <input>
+	    #Declarando a variável da função e dizendo que é um número real
+	    x=var('x')
+	    #Definindo a função 
+	    f(x)=sqrt(4*x^2+5*x+6)/(8*x^3+2*x^2+7)^(1/3)
+	    show(LatexExpr('f(x)='),f(x))
+	    show(LatexExpr('\\lim\\limits_{x\\to -\\infty}f(x)='),f(x).limit(x=-infinity),LatexExpr("=-1"))
+	  </input>
+	</sage>
+	<sage>
+	  <input>
+	    #Declarando a variável da função e dizendo que é um número real
+	    x=var('x')
+	    #Definindo a função 
+	    f(x)=sin(x^2-6*x+8)/(x^3-8)
+	    show(LatexExpr('f(x)='),f(x))
+	    show(LatexExpr('\\lim\\limits_{x\\to 2}f(x)='),f(x).limit(x=2))
+	  </input>
+	</sage>
+	</p>
+      </solution>
+    </exercise>
+
+    <exercise>
+      <statement>
+	<p>Considere a função <m>g\colon\R\to\R</m> dada por
+	<me>g(x) = \begin{cases}
+	\hfill x^2 - 9x,&amp; x\geq 3\\
+	\hfill 8-3x,&amp;  1 \leq x &lt; 3\\
+	\hfill-x^3 - (x-1)^2 + 6,&amp;  x &lt; 1
+	\end{cases}</me>
+	<ol marker="a.">
+	  <li>Determine os pontos onde <m>g</m> é contínua. Justifique bem
+	  sua resposta.</li>
+	  <li>Determine os pontos onde <m>g</m> é derivável. Justifique bem
+	  sua resposta.</li>
+	</ol>
+	</p>
+      </statement>
+      <answer>
+	<ol marker="a.">
+	  <li><m>g</m> é contínua em todos os pontos, exceto
+	  <m>p=3</m>.</li>
+	  <li><m>g</m> é derivável em todos os pontos, exceto
+	  <m>p=3</m>.</li>
+	</ol>
+      </answer>
+      <solution>
+	<p> Observamos inicialmente que para a função <m>g</m> ser
+	contínua num ponto <m>x=p</m> (que deve estar em seu domínio),
+	basta verificar que <m>\lim\limits_{x\to p}g(x)=g(p)</m>. Além
+	disso, <m>\lim\limits_{x\to p}g(x)=L\in\R\iff \lim\limits_{x\to
+	p^+}g(x)=\lim\limits_{x\to p^-}g(x)=L</m>.
+	</p>
+	<p> Para que uma função <m>g</m> seja derivável em <m>x=p</m>, o
+	limite <m>\lim\limits_{x\to p}\dfrac{g(x)-g(p)}{x-p}</m> deve
+	existir e ser um número real. Sabemos que isso garante a
+	continuidade de <m>g</m> em <m>x=p</m> (não vale a recíproca
+	disso!). Também podemos testar a diferenciabilidade de <m>g</m>
+	em <m>x=p</m> com o limite <m>\lim\limits_{h\to
+	0}\dfrac{g(p+h)-g(p)}{h}</m>.</p>
+
+	<p>Vamos testar essas duas condições em cada um dos pontos
+	indicados no enunciado:</p>
+
+	<ol marker="a.">
+	  <li><p>Como polinômios são funções contínuas, vemos que <m>g</m>
+	  é contínua em <m>(-\infty,1)\cup(1,3)\cup(3,+\infty)</m>, pois
+	  são intervalos abertos onde <m>g</m> é polinomial. Assim,
+	  resta verificar o que contece nos pontos <m>p=1</m> e
+	  <m>p=3</m> verificamos que:
+	  <me>\lim_{x \to 3^+} g(x) = \lim_{x \to 3^+} x^2-9x = 3^2 - 27
+	  = -18 = g(3).</me>
+	  Por outro lado, <me>\lim_{x \to 3^-} g(x) = \lim_{x \to
+	  3^-}8-3x=8 - 9 = -1\neq \lim_{x \to 3^+} g(x),</me> logo
+	  <m>g</m> não é contínua em <m>p=3</m>.</p>
+	  <p>Agora,
+	  <me>\lim_{x \to 1^+} g(x) = \lim_{x \to 1^+} 8 - 3x = 5 \lim_{x \to 1^-} g(x) = \lim_{x \to 1^-} -x^3-(x-1)^2,</me>
+	  donde <m>\lim\limits_{x \to 1} g(x)=5=g(1)</m> e 
+	  portanto <m>g</m> é continua em <m>p=1</m>.</p></li>
+	  <li><p>A diferenciabilidade de <m>g</m> em
+	  <m>A=(-\infty,1)\cup(1,3)\cup(3,+\infty)</m> segue do fato
+	  dela se expressar como um polinômio num intervalo aberto em
+	  torno de cada ponto de <m>A</m>. Vejamos o que acontece em
+	  <m>p=1</m> e <m>p=3</m>. Nesses pontos precisamos seguir pela
+	  definição (por que?):
+	  <md>
+	    <mrow>\lim_{x \to 1^+} \frac{g(x) - g(1)}{x - 1}
+	    &amp;=\lim_{x\to 1^+}
+	    \frac{8-3x-5}{x-1}=-3\quad\text{e}</mrow>
+	    <mrow>\lim_{x \to 1^-} \frac{g(x) - g(1)}{x - 1}
+	    &amp;=\lim_{x\to 1^-}\frac{-x^3-(x-1)^2+6-5}{x-1}=-3,</mrow>
+	  </md>
+	  mostrando que <m>g</m> é diferenciável em <m>p=1</m> e
+	  <m>g'(1)=-3</m>.</p>
+	  <p>Como <m>g</m> não é contínua em <m>p=3</m>, não pode ser
+	  derivável ali.</p></li>
+	</ol>
+	<p>Vejamos o gráfico de <m>g</m> no SageMath:
+	<figure xml:id="fig_2024-p1q2">
+          <caption>O gráfico de <m>f</m> com destaque em <m>p=1</m> e a
+          reta tangente nesse ponto.</caption>
+          <image xml:id="fig-2024-p1q2" width="90%">
+            <description>O gráficos de <m>f</m> com destaque em
+	    <m>p=1</m> e a reta tangente nesse ponto.</description>
+            <sageplot>
+              f = piecewise([((-infinity,1),
+              -x^3-(x-1)^2+6),([1,3],8-3*x),((3,infinity),x^2-9*x)]);
+              a=plot(f,(x,-4,4),exclude=[3],color="blue")
+              b=plot(f,(x,0.75,1.25),exclude=[1],color="blue",frame=True,transparent=True)+plot(5-3*(x-1),(x,0.8,1.2), color="red")
+              multi_graphics([a,(b,(0.7,.7,0.25,0.25))])
+            </sageplot>
+          </image>
+        </figure>
+
+	<!-- <sage> -->
+	<!--   <input> -->
+	<!--     g = piecewise([((-infinty,1), -->
+	<!--       -x^3-(x-1)^2+6),([1,3],8-3*x),([3,infinity),x^2-9*x)]); -->
+	<!--       a=plot(f,(x,-3,5),color="blue",aspect_ratio=1) -->
+	<!--       b=plot(f, (x,-0.75, -->
+	<!--       1.25),color="blue",frame=True,transparent=True) -->
+	<!--       c=plot(f, (x,2.75, -->
+	<!--       3.25),color="blue",frame=True,transparent=True,aspect_ratio=1) -->
+	<!--       multi_graphics([a,(b,(0.15,0.7,0.25,0.25)),(c,(.7,.15,.25,.25))]) -->
+	<!--   </input> -->
+	<!-- </sage> --></p>
+      </solution>
+    </exercise>
+
+    <!-- <exercise number="3"  xml:id="mat2453-2023-p1q3"> -->
+    <!--   <statement> -->
+    <!-- 	<p>Seja <m>f\colon ]0,+\infty[\to\R</m> dada por -->
+    <!-- 	<m>f(x)=e^{\frac{3}{x}}</m>. -->
+    <!-- 	<ol marker="a."> -->
+    <!-- 	  <li>Mostre que <m>f</m> é (estritamente) decrescente e calcule -->
+    <!-- 	  <m>\lim\limits_{x\to 0^+}f(x)</m>, bem como -->
+    <!-- 	  <m>\lim\limits_{x\to+\infty}f(x)</m>.</li> -->
+    <!-- 	  <li>Determine a equação da reta tangente ao gráfico de -->
+    <!-- 	  <m>f</m> no ponto <m>\big(p,f(p)\big)</m>.</li> -->
+    <!-- 	  <li>Considere o triângulo retângulo formado pelos semi-eixos -->
+    <!-- 	  positivos e a reta tangente ao gráfico de <m>f</m> no ponto -->
+    <!-- 	  <m>\big(p,f(p)\big)</m>. Escreva, em função de <m>p</m>, a -->
+    <!-- 	  área desse triângulo.</li> -->
+    <!-- 	  <li>Determine <m>p>0</m> para que essa seja a menor área -->
+    <!-- 	  possível.</li> -->
+    <!-- 	</ol> -->
+    <!-- 	</p> -->
+	
+    <!--   </statement> -->
+    <!--   <solution> -->
+    <!-- 	<p> -->
+    <!--       <ol marker="a."> -->
+    <!-- 	    <li><p>Como <m>f</m> é derivável em todos os pontos do seu -->
+    <!-- 	    domínio, que é um intervalo aberto, podemos estudar seu -->
+    <!-- 	    crescimento através do sinal da primeira deivada: -->
+    <!-- 	    <me>f'(x)=\dfrac{-3e^{3/x}}{x^2}&lt;0, \text{ para todo -->
+    <!-- 	    }x\in]0,+\infty[,</me> garantindo que <m>f</m> é decrescente -->
+    <!-- 	    em todo o seu domínio.</p> -->
+    <!-- 	    <p>Aos limites: -->
+    <!-- 	    <ul> -->
+    <!-- 	      <li><m>\lim\limits_{x\to 0^+}f(x)=\lim\limits_{x\to -->
+    <!-- 	      0^+}e^{3/x}=e^{\lim\limits_{x\to\;0^+}\frac{3}{x}}=+\infty</m>, -->
+    <!-- 	      pois a função exponencial é contínua, <m>\lim\limits_{x\to -->
+    <!-- 	      0^+}\dfrac{3}{x}=+\infty</m> e -->
+    <!-- 	      <m>\lim\limits_{y\to+\infty}e^y=+\infty</m>. -->
+    <!-- 	      </li> -->
+    <!-- 	      <li>Notando que -->
+    <!-- 	      <m>\lim\limits_{x\to+\infty}\dfrac{3}{x}=0</m>, com os -->
+    <!-- 	      mesmos argumentos utilizados acima, temos -->
+    <!-- 	      <m>\lim\limits_{x\to +\infty}f(x)=\lim\limits_{x\to -->
+    <!-- 	      +\infty}e^{3/x}=e^{\lim\limits_{x\to\;+\infty}\frac{3}{x}}=e^0=1</m>.</li> -->
+    <!-- 	    </ul></p> -->
+    <!-- 	    </li> -->
+    <!-- 	    <li><p>Em geral, a equação da reta tangente ao gráfico de uma -->
+    <!-- 	    função derivável no ponto <m>\big(p,f(p)\big)</m> é -->
+    <!-- 	    <me>y=f(p)+f'(p)(x-p).</me></p> -->
+    <!-- 	    <p>Neste caso temos <m>f(p)=e^{3/p}</m> e -->
+    <!-- 	    <m>f'(p)=\dfrac{3e^{3/p}}{p^2}</m>. Assim, a equação da reta -->
+    <!-- 	    tangente pedida é -->
+    <!-- 	    <me>y=e^{3/p}-\frac{3e^{3/p}}{p^2}(x-p)\implies y= -->
+    <!-- 	    -\dfrac{3e^{3/p}}{p^2}x+\frac{e^{3/p}}{p}(p+3).</me></p></li> -->
+    <!-- 	    <li><p>O triângulo descrito tem como vértices a origem e os -->
+    <!-- 	    interceptos da reta obtida acima com os eixos -->
+    <!-- 	    coordenados. Vamos determinar tais interceptos: -->
+    <!-- 	    <ul> -->
+    <!-- 	      <li><p><m>x=0</m>: <m>y=\frac{e^{3/p}}{p}(p+3)</m></p></li> -->
+    <!-- 	      <li><p><m>y=0</m>: <m>x=\frac{p}{3}(p+3)</m></p></li> -->
+    <!-- 	    </ul> -->
+    <!-- 	    A área do triângulo, para cada <m>p&gt;0</m>, é -->
+    <!-- 	    <me>A(p)=\frac{1}{2}\cdot\frac{e^{3/p}}{p}(p+3)\cdot -->
+    <!-- 	    \frac{p}{3}(p+3)=\frac{(p+3)^2e^{3/p}}{6}.</me></p> -->
+    <!-- 	    </li> -->
+    <!-- 	    <li><p>Como a função área está definida no intervalo aberto -->
+    <!-- 	    <m>]0,+\infty[</m>, os candidatos a ponto de mínimo, são -->
+    <!-- 	    aqueles onde <m>A'(p)=0</m>. A derivada de <m>A(p)</m> é -->
+    <!-- 	    <me>A'(p)=\frac{(p+3)}{3}e^{3/p}-\frac{(p+3)^2}{2p^2}e^{3/p}= -->
+    <!-- 	    \frac{e^{3/p}(p+3)}{6p^2}\big(2p^2-3(p+3)\big)</me></p> -->
+    <!-- 	    <p>Então <me>A'(p)=0\iff 2p^2-3p-9=0\iff p=3.</me>Observamos -->
+    <!-- 	    que, para <m>0&lt; p&lt; 3</m>, temos <m>A'(p)&lt; 0</m> -->
+    <!-- 	    (<m>A</m> é decrescente nesse intervalo), e -->
+    <!-- 	    para <m>p&gt; 3</m>, vale que <m>A'(p)&gt; 0</m> (<m>A</m> é -->
+    <!-- 	    crescente nesse intervalo). Logo <m>p=3</m> é ponto de -->
+    <!-- 	    mínimo global da área.</p> -->
+    <!-- 	    <p>A título de curiosidade a área mínima é -->
+    <!-- 	    <m>A(3)=6e</m>.</p> -->
+    <!-- 	    <p>Ainda não temos todas as ferramentas para construir o -->
+    <!-- 	    gráficos das funções que aparecem aqui, mas aqui estão: -->
+    <!-- 	    <figure xml:id="fig_2023-p1q3"> -->
+    <!-- 	      <caption>Os gráficos de <m>f</m>, <m>A</m> <m>A'</m>, além -->
+    <!-- 	      do triângulo de área mínima.</caption> -->
+    <!-- 	      <image xml:id="fig-2023-p1q3" width="90%"> -->
+    <!-- 		<description>Os gráficos de <m>f</m> e <m>f'</m></description> -->
+    <!-- 		<sageplot> -->
+    <!-- 		  h=exp(3/x) -->
+    <!-- 		  A=(x+3)^2*exp(3/x)/6 -->
+    <!-- 		  dA=diff(A,x) -->
+    <!-- 		  ph=plot(h,(x,1,20))+text("$f(x)$",(21,exp(1/7))) -->
+    <!-- 		  pA=plot(A,(x,1.5,7), color="green")+text("$A(p)$",(8,100*exp(3/7)/6),color="green") -->
+    <!-- 		  pl=polygon([(0,0),(0,2*exp(1)),(6,0)],color="green",alpha=2/5) -->
+    <!-- 		  pdA=plot(dA,(x,2,20),color="red")+text("$A'(p)$",(21.5,exp(3/21.5)*(21.5+3)/(2*3*21.5^2)*(2*21.5^2-21.5*3-3^2)),color="red") -->
+    <!-- 		  ph+pl+pdA+pA+line([(3,25),(3,-5)],linestyle="-\-",color="orange") -->
+    <!-- 		</sageplot> -->
+    <!-- 	      </image> -->
+    <!-- 	    </figure></p></li> -->
+    <!-- 	  </ol> -->
+    <!-- 	</p> -->
+    <!--   </solution> -->
+    <!-- </exercise> -->
+  </exercises>
+
+  <!-- <assemblage xml:id="asm_first-examples-summary"> -->
+  <!--   <title>Important Theorems</title> -->
+  <!--   <p> -->
+  <!--     List important results here. -->
+  <!--   </p> -->
+  <!-- </assemblage> -->
+</section>
+
