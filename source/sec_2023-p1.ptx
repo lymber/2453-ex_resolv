@@ -168,7 +168,7 @@
 		    (0,0)--({cos(36)},0)--({cos(36)},{sin(36)})--cycle;
 		    \filldraw[thick] ({cos(36)},{sin(36)}) circle (1pt) node[right]{$B$};
 		    \filldraw[thick] ({cos(36)},0) circle (1pt) node[below]{$C$};
-		    \draw (0.3,0) arc (0:36:0.3) node[xshift=6,yshift=-2] {$\theta$};;
+		    \draw (0.3,0) arc (0:36:0.3) node[xshift=6,yshift=-2] {$\theta$};
 		    \end{tikzpicture}
 		  </latex-image>
 		</image>
